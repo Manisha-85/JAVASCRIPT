@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+        ol {
+            list-style: none;
+            display: flex;
+        }
+        li::before {
+            content: " > ";
+        }
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+        li:first-child::before {
+            content: " ";
+        }
+        li:last-child {
+            color:gray;
+        }
+        p::selection {
+            background-color: yellow;
+        }
+        input::placeholder {
+            color:blue;
+        }
+    </style>
+ 
+</head>
+<body>
+    <input type="text" placeholder="Name Required">
+    <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Bootstrap</li>
+        <li>Sass</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+        <li>React</li>
+        <li>Node</li>
+        <li>Express</li>
+    </ol>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, perspiciatis voluptatem! Libero, dicta? Minima assumenda unde maxime provident incidunt, vel molestias maiores laboriosam quasi repellat nulla placeat laudantium necessitatibus sed? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam facilis cum odio necessitatibus quo, nobis eos assumenda quas nam suscipit ipsa voluptate praesentium aliquam magni mollitia unde voluptatibus sunt temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro accusamus magni commodi cupiditate nemo nulla nobis, quasi praesentium. Ratione quidem explicabo vel, illum reprehenderit quod. Perferendis odit cupiditate voluptates minus.</p>
+</body>
+</html>
