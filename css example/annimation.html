@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes Slide
+        {
+            from {
+                transform: translateX(120%);
+            }
+            25% {
+                transform: translateX(0%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+            to {
+                transform: translateX(-120%);
+            }
+        }
+        img {
+            animation-name: Slide;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        h1 {
+            animation-name: Slide;
+            animation-duration: 10s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+    <img src="../public/image/sale banners.jpeg" width="50%">
+    <h1>CSS ANIMATIONS</h1>
+</body>
+</html>

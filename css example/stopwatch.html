@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+            background: url(../public/image/backgroung.jpeg);
+        }
+        .time {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: blue; text-decoration: underline double; font-size: 30 px ;">Javascript</h1>
+    <h1 style="text-align: center; color:gray; text-decoration: underline ; font-size: 30 px ;"> Second Project in javascript</h1>
+    <h2 style="text-align: center; color: rgb(255, 0, 38); text-decoration: underline; font-size: 62px ;">Stopwatch</h2>
+    
+    <div class="time" id="display">00:00:00</div>
+    <img src="../public/image/play.jpeg" id="start"></img>
+    <img src="../public/image/stop-icon.jpeg" id="stop"></img>
+    <img src="../public/image/reset.jpeg" id="reset"></img>
+
+    <script>
+        let startTime, updatedTime, difference, tInterval;
+        let running = false;
+
+        const display = document.getElementById('display');
+
+        function startTimer() {
+            if (!running) {
+                startTime = new Date().getTime();
+                tInterval = setInterval(updateTime, 10);
+                running = true;
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(tInterval);
+            running = false;
+        }
+
+        function resetTimer() {
+            clearInterval(tInterval);
+            running = false;
+            difference = 0;
+            display.innerHTML = "00:00:00";
+        }
+
+        function updateTime() {
+            updatedTime = new Date().getTime();
+            difference = updatedTime - startTime;
+
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+            display.innerHTML = formattedTime;
+        }
+
+        function pad(num) {
+            return num < 10 ? "0" + num : num;
+        }
+
+        document.getElementById('start').onclick = startTimer;
+        document.getElementById('stop').onclick = stopTimer;
+        document.getElementById('reset').onclick = resetTimer;
+    </script>
+</body>
+</html>

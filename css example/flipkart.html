@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0c0d0e;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: rgb(192, 26, 186);
+    text-decoration: none;
+}
+
+.banner {
+    text-align: center;
+    padding: 100px;
+    background-color: #d5ec26;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #6fd7e5;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2874f0;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Flipkart</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            <h2>Welcome to Flipkart!</h2>
+            <p>Your one-stop shop for all your needs.</p>
+            <button onclick="alert('Exciting products coming soon!')">Shop Now</button>
+        </section>
+
+        <section class="products">
+            <h2>Featured Products</h2>
+            <div class="product">
+                <img src="../public/image/womens fashion.jpeg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Price: $100</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="../public/image/mens fashion.jpeg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Price: $200</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="../public/image/kids fashion.jpeg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Price: $300</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Flipkart. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
