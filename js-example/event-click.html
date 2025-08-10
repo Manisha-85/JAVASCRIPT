@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function Player(obj, e){
+            var msg = document.getElementById("msg");
+            if(e.clientX>=92 && e.clientX<=292)
+            {
+                switch(obj.name){
+                case "Prev":
+                    msg.innerHTML = "Playing Previous Track";
+                    break;
+                case "Play":
+                    msg.innerHTML = "Playing Track-1";
+                    break;
+                case "Pause":
+                    msg.innerHTML = "Paused Playing";
+                    break;
+                case "Stop":
+                    msg.innerHTML = "Stopped Playing";
+                    break;
+                case "Next":
+                    msg.innerHTML = "Playing Next Track";
+                    break;
+              }
+            }
+           
+        }
+        function DivClick(e){
+            if(e.clientX<89) {
+                alert('Please Select');
+            }
+            if(e.clientX>295) {
+                alert("Please Select");
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div onclick="DivClick(event)" class="m-4 w-25 d-flex justify-content-center bg-warning border border-2 p-3 rounded">
+        <div>
+            <div class="btn-group">
+                <button name="Prev" onclick="Player(this, event)" class="bi bi-chevron-left btn btn-danger"></button>
+                <button name="Play" onclick="Player(this, event)" class="bi bi-play btn btn-danger"></button>
+                <button name="Pause" onclick="Player(this, event)" class="bi bi-pause btn btn-danger"></button>
+                <button name="Stop" onclick="Player(this, event)" class="bi bi-stop btn btn-danger"></button>
+                <button name="Next" onclick="Player(this, event)" class="bi bi-chevron-right btn btn-danger"></button>
+            </div>
+            <p id="msg" align="center"></p>
+        </div>
+    </div>
+</body>
+</html>

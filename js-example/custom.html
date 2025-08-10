@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ImageClick(e){
+            var msg = document.querySelector("p");
+            if((e.clientX>120 && e.clientX<219) && (e.clientY>147 && e.clientY<248)){
+                msg.innerHTML = "Women Winter Jacket 20% OFF";
+            }
+            if((e.clientX>387 && e.clientX<456) && (e.clientY>238 && e.clientY<263)) {
+                msg.innerHTML = "womens purse 60% OFF";
+            }
+        }
+    </script>
+</head>
+<body>
+    <img onclick="ImageClick(event)" src="../public/image/womens fashion jacket.jpg" width="500" height="400">
+    <p></p>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function DetailsClick(obj, e, ...details) {
+            var [id, name, stock, cities, rating] = details;
+            document.write(`Id=${id}<br>Name=${name}<br>Stock=${stock}<br>Cities=${cities}<br>Rating=${rating.rate}<br>`);
+            document.write(`Button Name=${obj.name}<br>X Position=${e.clientX}`);
+        }
+    </script>
+</head>
+<body>
+    <button name="Details" class="btn btn-primary" onclick="DetailsClick(this, event, 1, 'TV', true, ['Delhi', 'Hyd'], {rate:4.5})">Details</button>
+</body>
+</html>

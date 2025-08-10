@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function VerifyRequired(){
+             var username = document.getElementById("txtName").value;
+             var userError = document.getElementById("userError");
+
+             if(username.length==0)
+             {
+                 userError.innerHTML = "User Name Required".fontcolor('red');
+             } else {
+                 if(username.length<4) {
+                    userError.innerHTML = "Name too short..".fontcolor('gold');
+                 } else {
+                     
+                     var firstCharCode = username.charCodeAt(0);
+                     if(firstCharCode>=65 && firstCharCode<=90)
+                     {
+                        userError.innerHTML = "";
+                     } else {
+                         userError.innerHTML = "Name must start with uppercase letter".fontcolor('red');
+                     }
+                 }
+             }
+        }
+        function VerifyComments(){
+            var commentsWarning = document.getElementById("commentsWarning");
+            var comments = document.getElementById("txtComments").value;
+            var maxlength = 100;
+            commentsWarning.innerHTML = `100 [${maxlength-comments.length}] chars remaining`;
+        }
+        function VerifyEmail(){
+            var email = document.getElementById("txtEmail").value;
+            var emailError = document.getElementById("emailError");
+            if(email.indexOf("@")==-1) {
+                emailError.innerHTML = "Invalid email Please include @".fontcolor('red');
+            } else {
+                if(email.endsWith("gmail.com")){
+                    emailError.innerHTML = "";
+                } else {
+                    emailError.innerHTML = "Please enter a valid gmail".fontcolor('red');
+                }
+            }
+        }
+        function VerifyCard(){
+             var card = document.getElementById("txtCard").value;
+             var imgCard = document.getElementById("imgCard");
+             if(card.startsWith("4455")) {
+                imgCard.src="../public/images/master.jpg";
+             } else {
+                imgCard.src = "../public/images/visa.jpg";
+             }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <dl class="mt-3 w-25">
+        <dt>User Name</dt>
+        <dd><input type="text" id="txtName" onkeyup="VerifyRequired()" onblur="VerifyRequired()"></dd>
+        <dd id="userError"></dd>
+        <dt>Your Comments</dt>
+        <dd>
+            <textarea onkeyup="VerifyComments()" id="txtComments" maxlength="100" rows="4" cols="40"></textarea>
+        </dd>
+        <dd id="commentsWarning"></dd>
+        <dt>Your email</dt>
+        <dd><input type="text" id="txtEmail" onblur="VerifyEmail()"></dd>
+        <dd id="emailError"></dd>
+        <dt>Your Card</dt>
+        <dd class="input-group">
+            <input type="text" onblur="VerifyCard()" class="form-control" id="txtCard"> <img id="imgCard" class="input-group-text" width="80">
+        </dd>
+    </dl>
+</body>
+</html>

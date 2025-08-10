@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function AddClick(){
+           result = prompt("Enter Folder Name");
+           if(result==null){
+              alert("Action Canceled");
+           }
+           else if(result=="") {
+              alert("Folder name can't be empty");
+           } else {
+              document.getElementById("lblFolder").innerHTML += "Folder Created : " + result + "<br>";
+           }
+        }
+    </script>
+</head>
+<body>
+    <h3>Google Drive</h3>
+    <div>
+        <button onclick="AddClick()"> + Add Folder </button>
+    </div>
+    <br><br>
+    <div id="lblFolder">
+
+    </div>
+</body>
+</html>

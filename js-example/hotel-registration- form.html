@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        h1{
+            font-weight: bold;
+            font-size: 55px;
+        }
+        body{
+            margin-top: 50px;
+        }
+
+        button{
+            width: 150px;
+         
+        }
+
+
+    </style>
+</head>
+<body background="../public/image/mountain sunset.jpg"  >
+    <div align="center" id="img">
+       <form action="Hotel-registration.html" method="get">
+        <h1>Google</h1>
+        <input type="text" name="search" size="40" class="mt-4 form-control w-25">
+        <br><br>
+        <div>
+            <button type="submit" >Search</button>
+        </div>
+       </form>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <script>
+        function orderclick(){
+            document.getElementById("lblname").innerHTML=document.getElementById("txtname").value;
+            document.getElementById("lbldate").innerHTML=document.getElementById("txtdate").value;
+            document.getElementById("lbldays").innerHTML=document.getElementById("txtdays").value;
+            document.getElementById("lblperson").innerHTML=document.getElementById("txtpersons").value;
+            document.getElementById("lblAdvance").innerHTML=document.getElementById("txtamount").value;
+
+            var roomname="";
+            var roomcost=0;
+            var aminitiesname="";
+            var aminitiescost=0;
+           
+            var optsuit=document.getElementById("optsuit");
+            var optdelux=document.getElementById("optdelux");
+
+            if(optsuit.checked){
+                roomname=optsuit.value;
+                roomcost=1000;
+                document.getElementById("imgposter").src="../public/images/suite-room.jpg";
+            }
+
+            if(optdelux.checked){
+                roomname=optdelux.value;
+                roomcost=2000;
+                document.getElementById("imgposter").src="../public/imagrs/delux-room.webp";
+            }
+
+            var optac=document.getElementById("optac");
+            var optlocker=document.getElementById("optlocker");
+
+            if(optac.checked){
+                aminitiesname+=optac.value;
+                aminitiescost=500;
+                roomcost+=aminitiescost;
+            }
+
+            if(optlocker.checked){
+                aminitiesname+=optlocker.value;
+                aminitiescost=300;
+                roomcost+=aminitiescost;
+            }
+
+            document.getElementById("lblroom").innerHTML=roomname;
+            document.getElementById("lblaminities").innerHTML=aminitiesname;
+
+            var total=0;
+            var person=document.getElementById("txtpersons").value;
+            var days=document.getElementById("txtdays").value;
+            var amount=document.getElementById("txtamount").value;
+            var total=(roomcost-amount)*days;
+             if(person<=2){
+                document.getElementById("lblbalance").innerHTML=total;
+             }else{
+                var add=person-2;
+                var sum=add*1000;
+                document.getElementById("lblbalance").innerHTML=total+sum;
+
+             }
+
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <header>
+        <h3  class="border border-1 text-center p-2 mt-2 ">Hotel Registration Form</h3>
+    </header>
+    <section>
+        <div class="accordion" id="hotel">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#customer" data-bs-toggle="collapse" class="btn btn-dark w-100 p-2  text-white">Customer Info</button>
+                </div>
+                <div class="accordion-collapse collapse" id="customer" data-bs-parent="#hotel">
+                    <div class="accordion-body border border-1 mt-2" >
+                        <div class="row  p-2 ">
+                            <div class="col ms-2">Customer Info</div>
+                            <div class="col" ><input type="text" id="txtname" class="form-control"></div>
+                            <span class="col"><label class="form-label">text</label></span>  
+                        </div>
+                        <div class="row  p-2">
+                            <div class="col ms-2">Check In Date</div>
+                            <div class="col" ><input type="date" id="txtdate" class="form-control"></div>
+                            <span class="col"><label class="form-label">date</label></span>  
+                        </div>
+                        <div class="row  p-2">
+                            <div class="col ms-2">Total Number Of Days</div>
+                            <div class="col" ><input type="number" id="txtdays" class="form-control"></div>
+                            <span class="col"><label class="form-label">Number</label></span>  
+                        </div>
+                        <div class="row  p-2">
+                            <div class="col ms-2">Total Number Of Persons</div>
+                            <div class="col" ><input type="number" id="txtpersons" class="form-control"></div>
+                            <span class="col"><label class="form-label">Number</label></span>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#room" data-bs-toggle="collapse" class="btn btn-dark w-100 p-2 mt-2">Select Room Type</button>
+                </div>
+                <div class="accodion-collapse collapse" data-bs-parent="#hotel" id="room">
+                    <div class="accordion-body border border-1 mt-2 ">
+                        <div class="row">
+                            <div class="col text-center">
+                                <img src="../public/image/suit room.jpg" width="200">
+                                <div>
+                                    <input type="radio" name="room" id="optsuit" class="form-check-input" value="SuitRoom"><label class="form-check-label text-center fw-bold"> SuitRoom </label>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <img src="../public/image/dulex room.jpg" width="200">
+                                <div>
+                                    <input type="radio" name="room" id="optdelux" class="form-check-input" value="DeluxRoom"><label class="form-check-label text-center fw-bold"> DeluxRoom </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#Aminities" data-bs-toggle="collapse" class="btn btn-dark w-100 p-2 mt-2">Select Aminities</button>
+                </div>
+                <div class="accordion-collapse collapse" id="Aminities" data-bs-parent="#hotel">
+                    <div class="accordion-body border border-1 mt-2">
+                        <div class="row">
+                            <div class="col text-center">
+                                <img src="../public/image/suit room.jpg" width="200">
+                                <div>
+                                    <input type="checkbox" name="aminities" id="optac" class="form-check-input" value="AC Room"><label class="form-check-label text-center fw-bold"> AC Room </label>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <img src="../public/image/dulex room.jpg" width="200">
+                                <div>
+                                    <input type="checkbox" name="aminities" id="optlocker" class="form-check-input" value="Locker Room"><label class="form-check-label text-center fw-bold"> Locker Room </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#advance" data-bs-toggle="collapse" class="btn btn-dark w-100 p-2 mt-2">Advance Amount</button>
+                </div>
+
+                <div class="accordion-collapse collapse" id="advance" data-bs-parent="#hotel">
+                    <div class="accordion-body row text-center border border-1 mt-2">
+                        <div class="col" >
+                            <label class="form-label">Advance Amount </label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="txtamount" class="form-control w-25">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-2 p-2">
+            <button data-bs-target="#summary" data-bs-toggle="modal" onclick="orderclick()" class="btn btn-dark w-25">Register</button>
+        </div>
+
+        <div class="modal fade" id="summary">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Your Total</h3>
+                    </div>
+                    <div class="moadl-body">
+                        <div class="row">
+                            <div class="col">
+                                <dl>
+                                    <dt>Customer Name</dt>
+                                    <dd id="lblname"></dd>
+                                    <dt>Date Of Joining</dt>
+                                    <dd id="lbldate"></dd>
+                                    <dt>Total days</dt>
+                                    <dd id="lbldays"></dd>
+                                    <dt>Total Persons</dt>
+                                    <dd id="lblperson"></dd>
+                                    <dt>RoomType</dt>
+                                    <dd id="lblroom"></dd>
+                                    <dt>Aminities</dt>
+                                    <dd id="lblaminities"></dd>
+                                    <dt>Advance Amount</dt>
+                                    <dd id="lblAdvance"></dd>
+                                    <dt>Balance Amount</dt>
+                                    <dd id="lblbalance"></dd>
+                                </dl>
+                            </div>
+                            <div class="col">
+                                <img id="imgposter" width="100%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

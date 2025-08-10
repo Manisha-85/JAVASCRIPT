@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function VerifyCaps(e) {
+            var error = document.getElementById("error");
+            if(e.keyCode>=65 && e.keyCode<=90) {
+                error.style.display = "block";
+            } else {
+                error.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Password</dt>
+        <dd><input type="password" onkeypress="VerifyCaps(event)" id="txtPwd"></dd>
+        <dd id="error" style="color:gold ;display: none;">
+            <span class="bi bi-exclamation-triangle"> </span>
+            <span>Warning : CAPS ON</span>
+        </dd>
+    </dl>
+</body>
+</html>

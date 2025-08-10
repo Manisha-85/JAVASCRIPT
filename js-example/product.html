@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        var iphone = {
+            title: "Apple iPhone 15 (Green, 128 GB)",
+            price: 59429,
+            rating: {rate:4.7, ratings:156992, reviews:6245},
+            offers: [
+                "Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit CardT&C",
+                "Bank Offer10% off up to ₹750 on SBI Credit Card Transactions of ₹4,990 and aboveT&C",
+                "Bank Offer10% off up to ₹1,250 on SBI Credit Card EMI Transactions of ₹4,990 and aboveT&C",
+                "Special PriceGet extra ₹13651 off (price inclusive of cashback/coupon)T&C"
+            ],
+            image: "../public/image/iphone.jpeg"
+        }
+
+        function bodyload(){
+            document.getElementById("imgProduct").src = iphone.image;
+            document.getElementById("lblTitle").innerHTML = iphone.title;
+            document.getElementById("lblRating").innerHTML = `
+               <span class="bg-success p-1 rounded text-white">${iphone.rating.rate} <span class="bi bi-star-fill"></span> </span> <span class="text-secondary fs-6 fw-bold ms-3"> ${iphone.rating.ratings.toLocaleString('en-in')} ratings & ${iphone.rating.reviews.toLocaleString('en-in')} reviews </span>
+            `;
+            document.getElementById("lblPrice").innerHTML = "&#8377;" + iphone.price.toLocaleString('en-in');
+
+            iphone.offers.map(function(offer){
+                 var li = document.createElement("li");
+                 li.className = "bi bi-tag-fill text-success my-2";
+                 li.innerHTML = `<span class="text-secondary ms-2">${offer}</span>`;
+                 document.getElementById("offers").appendChild(li);
+            })
+
+        }
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-3">
+            <img width="100%" id="imgProduct">
+        </div>
+        <div class="col-9">
+            <div id="lblTitle" class="fs-4"></div>
+            <div id="lblRating" class="mt-2"></div>
+            <div id="lblPrice" class="fs-3 fw-bold mt-3"></div>
+            <div>
+                <label class="form-label fw-bold mt-4">Available Offers</label>
+                <ul class="list-unstyled" id="offers">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

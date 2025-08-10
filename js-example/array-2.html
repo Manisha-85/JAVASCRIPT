@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function bodyload(){
+            var table = document.createElement("table");
+            table.border = "1";
+
+            var thead = document.createElement("thead");
+            var tbody = document.createElement("tbody");
+
+            var tr1 = document.createElement("tr");
+            var tr2 = document.createElement("tr");
+            var tr3 = document.createElement("tr");
+
+            var th = document.createElement("th");
+            th.innerHTML = "Product Name";
+            tr1.appendChild(th);
+            thead.appendChild(tr1);
+            table.appendChild(thead);
+
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+
+            td1.innerHTML = "Samsung TV";
+            td2.innerHTML = "iPhone 15";
+
+            tr2.appendChild(td1);
+            tr3.appendChild(td2);
+            tbody.appendChild(tr2);
+            tbody.appendChild(tr3);
+
+            table.appendChild(tbody);
+
+            document.querySelector("body").appendChild(table);
+
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+   
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function VerifyRequired(){
+             var username = document.getElementById("txtName").value;
+             var userError = document.getElementById("userError");
+
+             if(username.length==0)
+             {
+                 userError.innerHTML = "User Name Required".fontcolor('red');
+             } else {
+                 if(username.length<4) {
+                    userError.innerHTML = "Name too short..".fontcolor('gold');
+                 } else {
+                     userError.innerHTML = "";
+                 }
+             }
+        }
+        function VerifyComments(){
+            var commentsWarning = document.getElementById("commentsWarning");
+            var comments = document.getElementById("txtComments").value;
+            var maxlength = 100;
+            commentsWarning.innerHTML = `100 [${maxlength-comments.length}] chars remaining`;
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>User Name</dt>
+        <dd><input type="text" id="txtName" onkeyup="VerifyRequired()" onblur="VerifyRequired()"></dd>
+        <dd id="userError"></dd>
+        <dt>Your Comments</dt>
+        <dd>
+            <textarea onkeyup="VerifyComments()" id="txtComments" maxlength="100" rows="4" cols="40"></textarea>
+        </dd>
+        <dd id="commentsWarning"></dd>
+    </dl>
+</body>
+</html>

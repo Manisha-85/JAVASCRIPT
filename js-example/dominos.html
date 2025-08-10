@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domino's Pizza - Order Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #004b87;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Menu Styles */
+.menu {
+    margin: 20px 0;
+    width: 80%;
+    text-align: center;
+}
+
+#menu-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.menu-item button {
+    background-color: #004b87;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item button:hover {
+    background-color: #003366;
+}
+
+/* Cart Styles */
+.cart {
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: #d32f2f;
+}
+
+#checkout-btn {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#checkout-btn:disabled {
+    background-color: #9e9e9e;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Domino's Pizza</h1>
+        <p>Order Your Favorite Pizza Online!</p>
+    </header>
+
+    <!-- Pizza Menu Section -->
+    <section class="menu">
+        <h2>Pizza Menu</h2>
+        <div id="menu-items">
+            <!-- Pizza options will be added here dynamically using JavaScript -->
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </ul>
+        <p id="total-price">Total Price: $0.00</p>
+        <button id="checkout-btn" disabled>Proceed to Checkout</button>
+    
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Domino's Pizza. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Define the pizza menu items with name, price, and image URL
+const pizzas = [
+    { name: "Margherita", price: 9.99, img: "../public/image/margerita pizza.jpg" },
+    { name: "Pepperoni", price: 12.99, img: "../public/image/Pepperoni pizza.jpg" },
+    { name: "Extra cheese paneer tanduri", price: 14.99, img: "../public/image/extra cheese paneer tanduri pizza.jpg" },
+    { name: "Peri peri pizza", price: 11.99, img: "../public/image/peri peri pizza.jpg" },
+];
+
+// Cart array to store selected pizzas
+let cart = [];
+
+// Function to display the pizza menu
+function displayMenu() {
+    const menuItemsContainer = document.getElementById("menu-items");
+    menuItemsContainer.innerHTML = ''; // Clear the menu before adding items
+
+    pizzas.forEach((pizza, index) => {
+        const pizzaElement = document.createElement("div");
+        pizzaElement.classList.add("menu-item");
+        
+        pizzaElement.innerHTML = `
+            <img src="${pizza.img}" alt="${pizza.name}">
+            <h3>${pizza.name}</h3>
+            <p>$${pizza.price.toFixed(2)}</p>
+            <button onclick="addToCart(${index})">Add to Cart</button>
+        `;
+        
+        menuItemsContainer.appendChild(pizzaElement);
+    });
+}
+
+// Function to add a pizza to the cart
+function addToCart(index) {
+    const pizza = pizzas[index];
+    cart.push(pizza); // Add the pizza to the cart array
+
+    updateCart(); // Update the cart display
+}
+
+// Function to update the cart display
+function updateCart() {
+    const cartItemsContainer = document.getElementById("cart-items");
+    const totalPriceElement = document.getElementById("total-price");
+    const checkoutButton = document.getElementById("checkout-btn");
+
+    // Clear the cart items before updating
+    cartItemsContainer.innerHTML = '';
+
+    let totalPrice = 0;
+
+    cart.forEach((pizza, index) => {
+        const cartItemElement = document.createElement("li");
+        cartItemElement.classList.add("cart-item");
+
+        cartItemElement.innerHTML = `
+            <span>${pizza.name} - $${pizza.price.toFixed(2)}</span>
+            <button onclick="removeFromCart(${index})">Remove</button>
+           
+        `;
+        
+        cartItemsContainer.appendChild(cartItemElement);
+        totalPrice += pizza.price;
+    });
+
+    totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    
+    // Enable or disable the checkout button based on cart status
+    checkoutButton.disabled = cart.length === 0;
+}
+
+// Function to remove a pizza from the cart
+function removeFromCart(index) {
+    cart.splice(index, 1); // Remove pizza from cart array
+    updateCart(); // Update the cart display
+}
+
+// Initial call to display the menu
+displayMenu();
+
+    </script>
+</body>
+</html>

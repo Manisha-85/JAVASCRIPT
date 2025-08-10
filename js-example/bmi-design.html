@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        function button() {
+            var age = parseInt(document.getElementById("age").value);
+            var height = parseFloat(document.getElementById("height").value) / 100;
+            var weight = parseInt(document.getElementById("weight").value);
+            var bmi = weight / (height * height);
+            let category;
+            let img;  
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                document.querySelector('img').src='../public/images/underweight.png';
+            } else if (bmi < 24.9) {
+                category = 'Normal weight';
+                document.querySelector('img').src='../public/images/normal weight.png'
+            } else if (bmi < 29.9) {
+                category = 'Overweight';
+                document.querySelector('img').src='../public/images/over weight.png'
+            } else {
+                category = 'Obesity';
+            }
+            document.getElementById("result").innerHTML = "Your BMI is: " + bmi.toFixed(2) + "<br>" + category;
+        }
+    </script>
+    <style>
+        body {
+            background-image: radial-gradient(white, rgb(187, 228, 93));
+        }
+        .container {
+            border: 6px dashed red;
+            height: 600px;
+            width: 900px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .result{
+            position: absolute;
+            text-align: center;
+            bottom: 400px;
+            right:600px;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Arial;
+        }
+        img{
+           position: absolute;
+           left: 100px;
+           bottom: 100px;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <div class="container">
+        <h2 class="text-center mt-2 p-2" style="border-bottom: 1px solid black;">BMI calculator <span class="bi bi-calculator-fill"></span></h2>
+        <div class="ps-3 pt-2">
+            <div>
+                <input type="checkbox" class="form-check-input"><span> Male </span>
+                <input type="checkbox" class="form-check-input"><span> Female </span>
+            </div>
+            <div class="pt-4">
+                <span class=" fs-5 fw-bold"> age :</span> <input type="number" id="age" class="form-control w-25">
+            </div>
+            <div class="py-4">
+                <span class=" fs-5 fw-bold"> height :</span> <input type="number" id="height" step="0.01"   class="form-control w-25">
+            </div>
+            <div class="pb-4">
+                <span class=" fs-5 fw-bold">weight :</span> <input type="number" id="weight" class="form-control w-25">
+            </div>
+            <div>
+                <button class="btn btn-danger mt-5" onclick="button()">calculate</button>
+            </div>
+            <div id="result" class="result">  
+                </div>
+            <img width="200" src="" alt="">
+        </div>
+    </div>
+</body>
+</html>

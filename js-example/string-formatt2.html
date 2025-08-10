@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ApplyClick(){
+             var h = document.getElementById("rangeH").value;
+             var v = document.getElementById("rangeV").value;
+             var b = document.getElementById("rangeB").value;
+             var color = document.getElementById("txtColor").value;
+
+             document.querySelector("h1").style.textShadow  = `${h}px ${v}px ${b}px ${color}`;
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Set Shadow</dt>
+        <dd>
+            <input type="range" id="rangeH" min="1" value="1" max="50"> Horizontal <br>
+            <input type="range" id="rangeV" min="1" value="1" max="50"> Vertical <br>
+            <input type="range" id="rangeB" min="1" value="1" max="50"> Blur <br>
+            <input type="color" id="txtColor"> Shadow Color
+            <br><br>
+        </dd>
+        <dd>
+            <button onclick="ApplyClick()">Apply</button>
+        </dd>
+    </dl>
+    <h1>WELCOME</h1>
+</body>
+</html>

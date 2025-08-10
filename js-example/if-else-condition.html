@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function Q1Click(){
+            var q1 = document.getElementById("q1");
+            var icon = document.getElementById("icon");
+            q1.className = (q1.className==="d-none")?"d-block":"d-none";
+            icon.className = (icon.className==="bi bi-plus")?"bi bi-dash":"bi bi-plus";
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <button onclick="Q1Click()" class="btn btn-dark w-100 d-flex justify-content-between">
+        <span>What is Netflix?</span>
+        <span class="bi bi-plus" id="icon"></span>
+    </button>
+    <div id="q1" class="d-none">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nobis corrupti ab nam impedit suscipit eligendi ad, perspiciatis illo tempore qui excepturi voluptatem alias. Magni tempore ex dolores voluptatum beatae. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil similique perspiciatis ipsam magnam quisquam illum velit quam repudiandae, molestias facilis laudantium impedit atque. Libero nobis nemo illum eius perferendis eum.</p>
+    </div>
+</body>
+</html>

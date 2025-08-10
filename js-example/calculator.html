@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function GetCode(){
+            var code = Math.round(Math.random()*10) + " " + Math.round(Math.random()*10) +  " " + Math.round(Math.random()*10) +  " " + Math.round(Math.random()*10) + " " + Math.round(Math.random()*10) +  " " + Math.round(Math.random()*10);
+            document.getElementById("lblCode").innerHTML = code;    
+        }
+        function bodyload(){
+            GetCode();
+        }
+        function Reload(){
+            GetCode();
+        }
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid">
+    <dl>
+        <h3 class="bi bi-person-fill">User Login</h3>
+        <dt>User Name</dt>
+        <dd><input type="text"></dd>
+        <dt>Password</dt>
+        <dd><input type="password"></dd>
+        <dt>Verify Code <button onclick="Reload()" class="btn bi bi-arrow-clockwise"></button> </dt>
+        <dd id="lblCode"></dd>
+        <dd><input type="text" id="txtCode"></dd>
+    </dl>
+    <button type="onclick">Login</button>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function PayClick(){
+            var card = document.getElementById("txtCard").value;
+            var cvv = document.getElementById("txtCvv").value;
+            var expiry = document.getElementById("lstExpiry").value;
+            var h2 = document.querySelector("h2");
+
+            if(card===""){
+
+                h2.innerHTML = "Card Number Required".fontcolor('red');
+
+            } else {
+
+                if(card==="4444555566667890"){
+
+                    if(cvv===""){
+                         h2.innerHTML = "CVV Required".fontcolor('red');
+                    } else {
+                        if(cvv==="4567"){
+
+                               if(expiry==="-1"){
+                                   h2.innerHTML = "Expiry Required".fontcolor('red');
+                               } else {
+                                if(expiry==="2025"){
+                                    document.write("Payment Success..");
+
+                                    } else {
+                                    h2.innerHTML ="Invalid Expiry".fontcolor('red');
+                                    }
+                               }
+
+                            } else {
+                            h2.innerHTML = "Invalid CVV".fontcolor('red');
+                            }
+                    }
+                   
+
+                    } else {
+                    h2.innerHTML = "Invalid Card".fontcolor('red');
+                    }
+
+                 
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Card</dt>
+        <dd><input type="text" id="txtCard"></dd>
+        <dt>Cvv</dt>
+        <dd><input type="text" size="4" id="txtCvv"></dd>
+        <dt>Expiry</dt>
+        <dd>
+            <select id="lstExpiry">
+                <option value="-1">Select Expiry</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>2026</option>
+            </select>
+        </dd>
+    </dl>
+    <button onclick="PayClick()">Pay</button>
+    <h2 align="center"></h2>
+</body>
+</html>

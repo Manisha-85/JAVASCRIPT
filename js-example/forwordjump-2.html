@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function RamChange(){
+            var ramsize = parseInt(document.getElementById("lstRam").value);
+            if(ramsize>=6) {
+                document.getElementById("lstCard").disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Install Game</legend>
+        <dl>
+            <dt>Select Your RAM Size</dt>
+            <dd>
+                <select id="lstRam" onchange="RamChange()">
+                    <option>RAM SIZE</option>
+                    <option value="4">4 GB</option>
+                    <option value="6">6 GB</option>
+                    <option value="8">8 GB</option>
+                </select>
+            </dd>
+            <dt>Select Graphic Card</dt>
+            <dd>
+                <select disabled id="lstCard">
+                    <option>Graphic Card</option>
+                    <option>Intel</option>
+                    <option>Not Available</option>
+                </select>
+            </dd>
+        </dl>
+        <button disabled>Install</button>
+    </fieldset>
+</body>
+</html>

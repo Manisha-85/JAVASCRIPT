@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Submit(e){
+            e.preventDefault();
+            alert("Form Submits Data to Server");
+        }
+        function CityChange(){
+            var form = document.querySelector("form");
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="Submit(event)" onreset="alert('form will reset')">
+        <input type="text" name="UserName">
+        <select name="City" onchange="CityChange()">
+            <option>Select City</option>
+            <option>Delhi</option>
+            <option>Hyd</option>
+        </select>
+        <button type="submit">Submit</button>
+        <button type="reset">Cancel</button>
+    </form>
+</body>
+</html>

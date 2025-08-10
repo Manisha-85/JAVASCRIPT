@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function SubmitClick(){
+            var userid = document.getElementById("txtId").value;
+            var password = document.getElementById("txtPwd").value;
+            if(userid==="manu" && password==="manud@11") {
+                document.write("Login Success");
+            } else {
+                alert("Invalid Credentials");
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>UserId</dt>
+        <dd><input type="text" id="txtId"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="txtPwd"></dd>
+    </dl>
+    <button onclick="SubmitClick()">Submit</button>
+</body>
+</html>

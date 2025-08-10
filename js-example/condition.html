@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function VerifyPassword(){
+            var regExp = /(?=.*[A-Z])\w{4,15}/;
+            var password = document.getElementById("txtPwd").value;
+            var msg = document.getElementById("msg");
+            var meter = document.getElementById("meter");
+
+            if(password.match(regExp)){
+                msg.innerHTML = "Strong Password".fontcolor('green');
+                meter.value= "100";
+            } else {
+                if(password.length<4) {
+                    msg.innerHTML = "Poor Password".fontcolor('red');
+                    meter.value = "30";
+                } else {
+                    msg.innerHTML = "Weak Password".fontcolor('gold');
+                    meter.value = "70";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>Password</dt>
+        <dd><input size="25" onkeyup="VerifyPassword()" placeholder="4 to 15 with atleast on uppercase letter" type="password" id="txtPwd"></dd>
+        <dd id="msg"></dd>
+        <dd><meter id="meter" min="1" max="100" style="width: 200px; height:20px"></meter></dd>
+    </dl>
+</body>
+</html>

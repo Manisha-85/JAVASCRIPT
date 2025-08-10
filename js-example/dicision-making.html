@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function SortClick(){
+            var sortButton = document.getElementById("btnSort");
+            sortButton.className = (sortButton.className==="bi bi-sort-alpha-down")? "bi bi-sort-alpha-up": "bi bi-sort-alpha-down";
+        }
+        function StockChange(){
+            var stockCheckbox = document.getElementById("stock");
+            var stockLabel = document.getElementById("lblStock");
+
+            stockLabel.innerHTML = (stockCheckbox.checked)?"Available":"Out of Stock";
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="stock" onchange="StockChange()"> <label id="lblStock">Out of Stock</label>
+    </div>
+    <button onclick="SortClick()" id="btnSort" class="bi bi-sort-alpha-down"></button>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 150px;
+            height: 150px;
+        }
+        .pic-1 {
+            border-top-right-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+        .pic-2 {
+            border-top-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        .pic-3 {
+            border-bottom-right-radius: 100px;
+            border-top-left-radius: 100px;
+        }
+        .pic-4 {
+            border-bottom-left-radius: 100px;
+            border-top-right-radius: 100px;
+        }
+        @keyframes Rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .pics {
+            animation-name: Rotate;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    </style>
+    <script>
+        function FastClick(){
+            var flower = document.getElementById("flower");
+            flower.style.animationName = "Rotate";
+            flower.style.animationDuration = "1s";
+            flower.style.animationIterationCount = "infinite";
+            flower.style.animationTimingFunction = "linear";
+        }
+        function SlowClick(){
+            var flower = document.getElementById("flower");
+            flower.style.animationName = "Rotate";
+            flower.style.animationDuration = "5s";
+            flower.style.animationIterationCount = "infinite";
+            flower.style.animationTimingFunction = "linear";
+        }
+    </script>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+   <div>
+    <button onclick="FastClick()">Spin Fast</button>
+    <button onclick="SlowClick()">Spin Slow</button>
+    <div class="pics" style="margin-top: 100px;" id="flower" onmousedown="FastClick()" onmouseup="SlowClick()">
+        <div>
+            <img class="pic-1" src="../public/image/womens fashion jacket.jpg" width="200" height="200">
+            <img class="pic-2" src="../public/image/mens fashion.jpeg" width="200" height="200">
+        </div>
+        <div>
+            <img class="pic-3" src="../public/image/kids fashion.jpeg" width="200" height="200">
+            <img class="pic-4" src="../public/image/womens fashion.jpeg" width="200" height="200">
+        </div>
+    </div>
+   </div>
+</body>
+</html>
